@@ -1,0 +1,85 @@
+i<nav class="navbar">
+
+    <div class="container-fluid text-center">
+
+        <div class="col-2">
+            <div class="dropdown" *ngIf=" token !== null">
+                <button class="btn btn-primary mx-1" type="button" id="home-button" (click)="tablon()">
+                    <i class="fa-solid fa-house" style="color: #ffffff;"></i>
+                </button>
+
+                <button class="btn btn-primary mx-1" (click)="mensajePriv()" type="button" id="privatemsg-button">
+                    <i class="fa-solid fa-comment" style="color: #ffffff;"></i>
+                </button>
+
+                <button class="btn btn-primary mx-1" type="button" id="trending-button" (click)="trending()">
+                    <i class="fa-solid fa-rocket" style="color: #ffffff;"></i>
+                </button>
+
+                <button class="btn btn-danger mx-1" (click)="salir()" type="button" id="logout-button">
+                    <i class="fa-sharp fa-solid fa-arrow-right-from-bracket fa-rotate-180"></i>
+                </button>
+            
+            </div>
+
+            <div class="dropdown" *ngIf=" token == null">
+                <button class="btn btn-primary mx-1" type="button" id="trending-button" (click)="trending()">
+                    <i class="fa-solid fa-rocket" style="color: #ffffff;"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <a class="navbar-brand">Microblog</a>
+        </div>
+
+        <form [formGroup]="buscarForm">
+            <div class="col">
+                <div class="input-group px-4 py-2">
+                    <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon2" formControlName="alias">
+                    <button class="btn btn-primary" 
+                        type="button" 
+                        id="search-button" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#ModalFiltros" 
+                        (click)="submitBuscar()">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</nav>
+
+<div class="modal fade" id="ModalFiltros" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="width: 100%;">
+    <div class="modal-dialog" style="width: 100% ; max-width: 50%; min-width: 400px;">
+        <div class="modal-content" style="width: 100% ;">
+            <ng-container *ngIf="arrayUsuarios?.length > 0; else noUsuarios">
+                <div class="modal-header">
+                    <h3>Usuarios Encontrados</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
+                </div>
+                <div class="list-group">
+                    <div  *ngFor="let usuario of arrayUsuarios">
+                        <a  [routerLink]="'/muro/' + usuario.alias" class="list-group-item list-group-item-action" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-user"></i>
+                            {{ usuario.alias }}
+                        </a>
+                    </div>
+                    
+                </div>
+            </ng-container>
+            <br>
+        </div>
+    </div>
+</div> 
+
+<ng-template #noUsuarios>
+    <div class="modal-header">
+        <h3>Usuario inexistente</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
+    </div>
+    <div class="modal-body text-center">
+        <p>No se encontraron usuarios con '{{buscarForm.value.alias}}'</p>
+    </div>
+</ng-template>

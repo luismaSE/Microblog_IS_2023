@@ -1,0 +1,5 @@
+Glosario
+
+Muro: Perfil. Sección personal que representa a un usuario individual. El muro incluye información como nombre de usuario, descripción, cantidad de seguidos, cantidad de seguidores y los mensajes publicados.
+ 
+Tablón de anuncios: Feed. Sección donde se muestran las publicaciones más recientes y relevantes de distintos usuarios y páginas que el usuario sigue.

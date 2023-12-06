@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+.navbar {
+    background-color: #0061b5;
+}
+
+.navbar-brand {
+    font-weight: bolder;
+    font-size: 35px;
+    color:rgb(255, 255, 255);
+}
+
+body {
+    background-color:#313642;
+}
+
+
+/* .container-fluid {
+    background-color: black;
+}
+
+[class*="col"] {
+  } */

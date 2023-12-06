@@ -1,0 +1,20 @@
+<div class="row" style="height: 100%; background-color:#313642;">
+    <div class="col"></div>
+
+    <div class="col-8">
+
+        <app-mensaje-input></app-mensaje-input>
+        
+        <hr class="hr" style="border-top: 1px solid rgb(255, 255, 255); width: 55rem; margin: 0 auto;">
+
+        <div  *ngFor="let mensaje of arrayMensajes">
+            <app-mensaje [mensaje] = "mensaje"></app-mensaje>
+        </div>
+
+    </div>
+    <div class="col-2">
+        <app-datos-usuario></app-datos-usuario>
+    </div>
+    <div class="col"></div>
+
+</div>

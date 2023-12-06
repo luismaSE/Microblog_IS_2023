@@ -1,0 +1,88 @@
+
+<section style="background-color: #eee;">
+
+<div class="container py-5">
+  
+<div class="row">
+  
+  <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0" >
+
+    <h5 class="font-weight-bold mb-3 text-center text-lg-start">Contactos</h5>
+
+    <div class="card" style="border-radius: 30px;">
+      <div class="card-body" style="max-height: 70vh; overflow-y: scroll;">
+
+        <ul class="list-unstyled mb-0">
+
+          <div  *ngFor="let num of numbers">
+
+            <li class="p-2 my-1 border-bottom" (click)="submit(arrayContactos['contactos'][num])">
+              <a  class="d-flex justify-content-between">
+                <div class="d-flex flex-row">
+                  <img src="https://static.wikia.nocookie.net/kickbuttowski/images/3/3d/Gunther.png" alt="avatar"
+                    class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                  <div class="pt-1">
+                    <p class="fw-bold mb-0">{{arrayContactos["contactos"][num]}}</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-7 col-xl-8" >
+    <ul class="list-unstyled" style="max-height: 57.5vh; overflow-y: scroll;" >
+      
+      <h1 style="text-align: center;">{{this.contacto}}</h1>
+
+      <div *ngFor="let mensaje of arrayMensajes">
+
+        <ng-container *ngIf="this.contacto === mensaje['emisor'];else yousent">
+          <li class="d-flex justify-content-between mb-4 " >
+          
+              <div class="card" style="border-radius: 30px; display: inline-block;" >
+                  <div class="card-header justify-content-between flex-column p-3" style="background-color: #0d6efd; border-top-right-radius: 30px">
+                    <p class="fw-bold mb-0">{{mensaje["emisor"]}}</p>
+                    <p class="text small mb-0" style="color: white;"><i class="far fa-clock"></i>{{mensaje["fecha"]["$date"].split("T")[0].split("-")[2]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[1]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[0]}} a las {{mensaje["fecha"]["$date"].split("T")[1].split(":")[0]}}:{{mensaje["fecha"]["$date"].split("T")[1].split(":")[1]}}</p>
+
+                  </div>
+                  <div class="card-body">
+                    <p class="mb-0">
+                      {{mensaje["texto"]}}
+                    </p>
+                  </div>
+              </div>
+            </li>
+          </ng-container>
+
+          <ng-template #yousent >
+            <li class="d-flex justify-content-between mb-4" style="flex-direction: row-reverse;" >
+              <div class="card mx-3" style="border-radius: 30px">
+                  <div class="card-header justify-content-between flex-column p-3" style="background-color: #727272; border-top-left-radius: 30px;">
+                    <p class="fw-bold mb-0 text-end">Tu</p>
+                    <p class="text small text-end mb-0" style="color: white;"><i class="far fa-clock"></i>{{mensaje["fecha"]["$date"].split("T")[0].split("-")[2]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[1]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[0]}} a las {{mensaje["fecha"]["$date"].split("T")[1].split(":")[0]}}:{{mensaje["fecha"]["$date"].split("T")[1].split(":")[1]}}</p>
+
+                  </div>
+                  <div class="card-body">
+                    <p class="text-end mb-0">
+                      {{mensaje["texto"]}}
+                    </p>
+                  </div>
+              </div>
+          </li>
+          </ng-template>
+      </div>
+    </ul>
+    <form [formGroup]="mensajeForm">
+        <div class="form-outline" >
+          <textarea class="form-control p-3" id="textAreaExample2" formControlName="texto" rows="4" placeholder="Escribe tu mensaje aquí ..." style="border-radius: 30px"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary btn-rounded float-end mt-1" (click)="send(this.contacto)">Send</button>
+    </form>
+  </div>
+
+  </div>
+</div>
+</section>

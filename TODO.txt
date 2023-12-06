@@ -1,0 +1,27 @@
+Lo que corrigio el profe la ultima clase:
+
+- Diagrama de paquetes
+- Leer muro va dentro del paquete mensajes
+- Diagrama de clase de diseno, relacion entre mensaje y etiqueta es de asociación
+- Agregar lista de usuarios cuando buscas un usuario en los diagramas de requerimientos y anális
+
+Casos de Uso:
+
+- Ver tendencias --> OK
+- Registrar --> OK
+- Ingresar --> OK
+- Buscar Usuario --> OK
+- Leer muro de un usuario --> OK
+- Seguir usuario/Dejar de seguir --> OK
+- Publicar mensaje --> OK
+
+- Borrar mensaje --> OK
+- Editar mensaje --> OK
+- Enviar mensaje privado --> OK
+- Ver tablon de anuncios --> OK
+- Cambiar dias tendencias --> OK
+- Enviar mail  cuando cambian dias tendencias --> OK
+
+# Republicar mensaje
+# Ingresar OAuth
+

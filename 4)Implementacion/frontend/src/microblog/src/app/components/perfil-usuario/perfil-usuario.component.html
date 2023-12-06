@@ -1,0 +1,95 @@
+<div class="row">
+
+    <div class="dropdown" *ngIf=" token === undefined">
+        <app-bienvenida></app-bienvenida>
+      </div>
+
+    <div class="col">
+    </div>
+
+    <div class="col">
+
+        <div class="card mx-auto my-4 px-4" style="width: 55rem; border-radius: 30px;">
+            <div class="row" >
+                <div class="col-3 p-2">
+
+                    <div *ngIf="username === alias">
+                        <img src="https://www.pngkey.com/png/full/149-1496931_kick-buttowski.png" alt="avatar"
+                        class="rounded-circle d-flex  me-3 shadow-1-strong" width="90">
+                    </div>
+
+                    <div *ngIf="username !== alias">
+                    <img src="https://static.wikia.nocookie.net/kickbuttowski/images/3/3d/Gunther.png" alt="avatar"
+                    class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                    </div>
+
+
+                    <h5 class="card-title my-2" style="text-align: start; font-size: 2vh;">{{user.nombre}}</h5>
+                </div>
+                <div class="col-9">
+                    <div class="row mt-3">
+                        <div class="col-3 text-center">
+                            <h5 style="font-size: 2vh;">{{user.seguidos.length}}</h5>
+                            <h6 style="font-size: 2vh;">seguidos</h6>
+                        </div>
+                        <div class="col-3 text-center">
+                            <h5 style="font-size: 2vh;">{{user.seguidores.length}}</h5>
+                            <h6 style="font-size: 2vh;">seguidores</h6>
+                        </div>
+                        <div class="col-3 text-center">
+                            <h5 style="font-size: 2vh;">{{arrayMensajes.length}}</h5>
+                            <h6 style="font-size: 2vh;">mensajes</h6>
+                        </div>
+                        <div class="col-3 text-end">
+                            <div *ngIf="username === alias">
+
+                            </div>
+                            <div *ngIf="username !== alias">
+                                <div *ngIf="seguido === true">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-primary" routerLink="mp" (click)="enviarMp()">
+                                            <i class="fa-solid fa-message"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger" (click)="submit()">
+                                            <i class="fa-solid fa-user-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+    
+                                <div *ngIf="seguido === false">
+                                    <div *ngIf="token">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button type="button" class="btn btn-primary" routerLink="mp" (click)="enviarMp()">
+                                                <i class="fa-solid fa-message"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-success" (click)="submit()">
+                                                <i class="fa-sharp fa-solid fa-user-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                    <hr class="hr" style="border-top: 1px solid rgb(0, 0, 0);" />
+                    <div class="row my-2 overflow-scroll">
+                        <p class="text-start" style="font-size: 1.75vh;">{{user.descripcion}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <hr class="hr" style="border-top: 1px solid rgb(255, 255, 255);" />
+
+        <div  *ngFor="let mensaje of arrayMensajes">
+            <app-mensaje [mensaje] = "mensaje"></app-mensaje>
+        </div>
+
+    </div>
+
+    <div class="col">
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="card my-3 px-4" style="width: 18rem; border-radius: 30px;">
+    <img src="https://www.pngkey.com/png/full/149-1496931_kick-buttowski.png" 
+        class="card-img-top mx-auto d-block my-3" 
+        style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+
+    <div class="card-body">
+        <h5 class="card-title" style="text-align: center;">{{token.alias}}</h5>
+        <p class="card-text">Descripcion: {{token.descripcion}}</p>
+    </div>
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"> Seguidores: {{ datos?.seguidores.length }}</li>
+        <ul style="height:200px; overflow:hidden; overflow-y:scroll; list-style: none;">
+                <li *ngFor="let usuario of datos?.seguidores">{{usuario}}</li>
+        </ul>
+
+        <li class="list-group-item">Seguidos: {{datos?.seguidos.length }}</li>
+        <ul style="height:200px; overflow:hidden; overflow-y:scroll; list-style: none;">
+                <li *ngFor="let usuario of datos?.seguidos">{{usuario}}</li>
+        </ul>
+    </ul>
+
+    <div class="card-body">
+        <a href="https://www.youtube.com/watch?v=5K1eLgY4zwg" class="card-link">Guepardex</a>
+    </div>
+</div>

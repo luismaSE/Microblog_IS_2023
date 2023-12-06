@@ -1,0 +1,83 @@
+<div *ngIf="alias === mensaje.autor">
+        
+    <div class="card mx-auto my-4 px-4" style="width: 55rem; border-radius: 30px;">
+
+
+        <table>
+            <tr>
+                <td rowspan="3">
+                    <img src="https://www.pngkey.com/png/full/149-1496931_kick-buttowski.png" alt="avatar"
+                    class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60"> <br>
+                    <h5 class="card-title" style="text-align: center;">{{mensaje.autor}}</h5>
+                </td>
+
+                <td valign= middle >
+                    <p class="text-start" style="color: #cecece ; font-size: 15px;">
+                        {{mensaje["fecha"]["$date"].split("T")[0].split("-")[2]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[1]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[0]}} a las {{mensaje["fecha"]["$date"].split("T")[1].split(":")[0]}}:{{mensaje["fecha"]["$date"].split("T")[1].split(":")[1]}}
+                    </p>
+                </td>
+
+                <td rowspan="3" align="right">
+                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group" >
+                        <button class="btn btn-outline-primary me-md-2" (click)="update(mensaje._id['$oid'])" type="button">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button class="btn btn-outline-primary" (click)="delete(mensaje._id['$oid'])" type="button">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td rowspan="2" style="width: 80%;">
+                    <form [formGroup]="modificarForm">
+                        <textarea 
+                            value="{{mensaje.texto}}" 
+                            class="text-start" 
+                            formControlName="texto"
+                            style="width: 32rem; border: 0px; width: 100%; height: 100px;">
+                        </textarea>
+                    </form>
+                </td>
+            </tr>
+        </table> 
+    </div>
+</div>
+
+
+
+
+<div *ngIf="alias !== mensaje.autor">   
+    <div class="card mx-auto my-4 px-4" style="width: 55rem; border-radius: 30px;">
+
+        <table>
+            <tr>
+                <td rowspan="3" align="center" style="height: 20px;">
+                    <img src="https://static.wikia.nocookie.net/kickbuttowski/images/3/3d/Gunther.png" alt="avatar"
+                    class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                    <h5 class="card-title" style="text-align: center;">{{mensaje.autor}}</h5>
+                </td>
+
+                <td>
+                    <p style="color: #cecece ; font-size: 15px;">
+                        {{mensaje["fecha"]["$date"].split("T")[0].split("-")[2]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[1]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[0]}} a las {{mensaje["fecha"]["$date"].split("T")[1].split(":")[0]}}:{{mensaje["fecha"]["$date"].split("T")[1].split(":")[1]}}
+                    </p>
+                </td>
+
+                <td rowspan="3" align="right">
+                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                        <button class="btn btn-outline-primary" type="button">
+                            <i class="fa-sharp fa-solid fa-retweet"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td rowspan="2" style="width: 80%;">
+                    <p class="text-start" style="width: 32rem;">{{mensaje.texto}}</p>
+                </td>
+            </tr>
+
+        </table>

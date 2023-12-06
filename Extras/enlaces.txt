@@ -1,0 +1,9 @@
+Lucid:
+https://lucid.app/lucidchart/2db916f6-4d2b-4fd2-94cb-cdbef587332d/edit?invitationId=inv_07321aa6-7f4f-41bb-ab82-f34bc30792bf
+https://lucid.app/lucidspark/21b3f8ce-ed03-4b74-ba30-6704995362aa/edit?invitationId=inv_5ea4070e-958d-4fa5-8783-5af3855ace4e&page=0_0#
+
+Figma:
+https://www.figma.com/file/xaOMLLcW4zCQGYnqORtx7j/Microblog?type=design&node-id=0-2347&mode=design&t=l4wxlt0rB5GTYjR2-0
+
+GitHub:
+https://github.com/luismaSE/Microblog_G1

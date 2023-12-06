@@ -1,0 +1,17 @@
+flask
+python-dotenv
+flask-restful
+flask-jwt-extended
+flask_pymongo
+certifi
+pymongo
+flask_mail
+flask-login
+flask-cors
+WTForms
+oauthlib
+requests
+pyOpenSSL
+
+
+

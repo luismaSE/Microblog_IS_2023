@@ -1,0 +1,19 @@
+<div class="card mx-auto my-3 px-5" style="width: 55rem; border-radius: 30px;">
+    <div class="row">
+        <div class="col-1 mx-3 my-2">
+            <img src="https://www.pngkey.com/png/full/149-1496931_kick-buttowski.png" alt="avatar"
+                class="rounded-circle" width="75px"> 
+        </div>
+
+        <div class="col-8 mx-auto my-3">
+            <form [formGroup]="mensajeForm">
+                <div class="input-group input-group-lg my-2">
+                    <input type="text" class="form-control" width="auto" placeholder="Escribe aqui tu mensaje..." aria-label="Escribe aqui tu mensaje..." formControlName="texto" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-primary" type="button" id="postmsg-button" (click)="submit()">
+                        <i class="fa-regular fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
