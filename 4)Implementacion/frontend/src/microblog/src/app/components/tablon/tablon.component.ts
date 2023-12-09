@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import {MensajesService} from './../../services/post.service'
+import {MensajesService} from '../../services/post.service'
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 
 @Component({
-  selector: 'app-muro',
-  templateUrl: './muro.component.html',
-  styleUrls: ['./muro.component.css']
+  selector: 'app-tablon',
+  templateUrl: './tablon.component.html',
+  styleUrls: ['./tablon.component.css']
 })
-export class MuroComponent implements OnInit {
+export class TablonComponent implements OnInit {
 
   alias: any;
   mensajes: any;
@@ -23,6 +23,8 @@ export class MuroComponent implements OnInit {
   ngOnInit(): void {
     
     this.token = localStorage.getItem("token") || undefined
+
+    //! Obtener mensajes
     this.MensajesService.getMensajes(this.token).subscribe(
       (data:any) => {
         this.arrayMensajes = data;

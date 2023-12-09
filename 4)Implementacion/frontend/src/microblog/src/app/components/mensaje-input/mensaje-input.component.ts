@@ -29,7 +29,8 @@ export class MensajeInputComponent implements OnInit {
     )
   }
 
-  submit() {
+  //! Publicar mensaje
+  publicar() {
     if(this.mensajeForm.valid) {
       this.MensajesService.postMensajes({texto:this.mensajeForm.value.texto},this.token).subscribe(
         {
@@ -53,6 +54,10 @@ export class MensajeInputComponent implements OnInit {
         texto: ["", Validators.required],
       } 
     )
+  }
+
+  perfil() {
+    window.location.href = "/muro/" + this.getDecodedAccessToken(this.token).alias
   }
 
   getDecodedAccessToken(token: any): any {

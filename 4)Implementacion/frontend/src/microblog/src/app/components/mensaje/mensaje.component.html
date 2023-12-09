@@ -7,7 +7,7 @@
             <tr>
                 <td rowspan="3">
                     <img src="https://www.pngkey.com/png/full/149-1496931_kick-buttowski.png" alt="avatar"
-                    class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60"> <br>
+                    class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60" (click)="perfil(mensaje.autor)"> <br>
                     <h5 class="card-title" style="text-align: center;">{{mensaje.autor}}</h5>
                 </td>
 
@@ -55,7 +55,7 @@
             <tr>
                 <td rowspan="3" align="center" style="height: 20px;">
                     <img src="https://static.wikia.nocookie.net/kickbuttowski/images/3/3d/Gunther.png" alt="avatar"
-                    class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                    class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60" (click)="perfil(mensaje.autor)">
                     <h5 class="card-title" style="text-align: center;">{{mensaje.autor}}</h5>
                 </td>
 

@@ -1,0 +1,19 @@
+[x] Buscar Usuario
+[x] Seguir/Dejar de seguir
+[x] Leer muro de un usuario
+[x] Login
+[x] Publicar mensaje
+[x] Registrar
+[x] Ver tendencias
+
+[x] Borrar mensaje
+[x] Editar mensaje
+[x] Enviar mensaje privado
+[x] Ver tablon de anuncios
+[x] Cambiar dias tendencias
+[x] Enviar mail  cuando cambian dias tendencias
+
+[ ] Republicar mensaje
+[ ] Ingresar OAuth
+
+https://lucid.app/lucidspark/51b62e5f-3a7d-43eb-8d87-60e30c988735/edit?invitationId=inv_4c79045a-adec-4051-9a19-cd31fa739efa&page=0_0# 

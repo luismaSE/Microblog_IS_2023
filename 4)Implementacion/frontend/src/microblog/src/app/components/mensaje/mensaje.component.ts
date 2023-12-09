@@ -46,6 +46,10 @@ export class MensajeComponent implements OnInit {
       window.location.reload();
     }
 
+    perfil(alias: any) {
+      window.location.href = "/muro/" + alias
+    }
+
     update(id: any) {
       this.MensajeService.putMensaje({texto:this.modificarForm.value.texto},this.token, id).subscribe(
         {

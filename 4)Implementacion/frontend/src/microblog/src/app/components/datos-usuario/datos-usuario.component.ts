@@ -17,13 +17,20 @@ export class DatosUsuarioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.token = this.getDecodedAccessToken(localStorage.getItem("token"))
+    this.token = this.getDecodedAccessToken(localStorage.getItem("token"));
 
+    //! Obtiene los datos del usuario
     this.usuarioService.getUsuario(this.token.alias).subscribe(
       (data:any) => {        
         this.datos = data;
+        console.log()
       }
     );
+  }
+
+  //! Redirecciona al perfil del usuario
+  perfil() {
+    window.location.href = "/muro/" + this.token.alias
   }
 
   getDecodedAccessToken(token: any): any {

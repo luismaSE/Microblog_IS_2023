@@ -14,8 +14,8 @@
 
         <ul class="list-unstyled mb-0">
 
+          <!--! Contactos -->
           <div  *ngFor="let num of numbers">
-
             <li class="p-2 my-1 border-bottom" (click)="submit(arrayContactos['contactos'][num])">
               <a  class="d-flex justify-content-between">
                 <div class="d-flex flex-row">
@@ -28,6 +28,7 @@
               </a>
             </li>
           </div>
+
         </ul>
       </div>
     </div>
@@ -39,40 +40,42 @@
 
       <div *ngFor="let mensaje of arrayMensajes">
 
+        <!--! Mensajes de un contacto -->
         <ng-container *ngIf="this.contacto === mensaje['emisor'];else yousent">
           <li class="d-flex justify-content-between mb-4 " >
-          
               <div class="card" style="border-radius: 30px; display: inline-block;" >
-                  <div class="card-header justify-content-between flex-column p-3" style="background-color: #0d6efd; border-top-right-radius: 30px">
-                    <p class="fw-bold mb-0">{{mensaje["emisor"]}}</p>
-                    <p class="text small mb-0" style="color: white;"><i class="far fa-clock"></i>{{mensaje["fecha"]["$date"].split("T")[0].split("-")[2]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[1]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[0]}} a las {{mensaje["fecha"]["$date"].split("T")[1].split(":")[0]}}:{{mensaje["fecha"]["$date"].split("T")[1].split(":")[1]}}</p>
-
-                  </div>
-                  <div class="card-body">
-                    <p class="mb-0">
-                      {{mensaje["texto"]}}
-                    </p>
-                  </div>
+                <div class="card-header justify-content-between flex-column p-3" style="background-color: #0d6efd; border-top-right-radius: 30px">
+                  <p class="fw-bold mb-0">{{mensaje["emisor"]}}</p>
+                  <p class="text small mb-0" style="color: white;"><i class="far fa-clock"></i>{{mensaje["fecha"]["$date"].split("T")[0].split("-")[2]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[1]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[0]}} a las {{mensaje["fecha"]["$date"].split("T")[1].split(":")[0]}}:{{mensaje["fecha"]["$date"].split("T")[1].split(":")[1]}}</p>
+                </div>
+                <div class="card-body">
+                  <p class="mb-0">
+                    {{mensaje["texto"]}}
+                  </p>
+                </div>
               </div>
             </li>
           </ng-container>
 
+          <!--! Mensaje mío -->
           <ng-template #yousent >
             <li class="d-flex justify-content-between mb-4" style="flex-direction: row-reverse;" >
               <div class="card mx-3" style="border-radius: 30px">
-                  <div class="card-header justify-content-between flex-column p-3" style="background-color: #727272; border-top-left-radius: 30px;">
-                    <p class="fw-bold mb-0 text-end">Tu</p>
-                    <p class="text small text-end mb-0" style="color: white;"><i class="far fa-clock"></i>{{mensaje["fecha"]["$date"].split("T")[0].split("-")[2]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[1]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[0]}} a las {{mensaje["fecha"]["$date"].split("T")[1].split(":")[0]}}:{{mensaje["fecha"]["$date"].split("T")[1].split(":")[1]}}</p>
+                <div class="card-header justify-content-between flex-column p-3" style="background-color: #727272; border-top-left-radius: 30px;">
+                  <p class="fw-bold mb-0 text-end">Tu</p>
+                  <p class="text small text-end mb-0" style="color: white;"><i class="far fa-clock"></i>{{mensaje["fecha"]["$date"].split("T")[0].split("-")[2]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[1]}}/{{mensaje["fecha"]["$date"].split("T")[0].split("-")[0]}} a las {{mensaje["fecha"]["$date"].split("T")[1].split(":")[0]}}:{{mensaje["fecha"]["$date"].split("T")[1].split(":")[1]}}</p>
 
-                  </div>
-                  <div class="card-body">
-                    <p class="text-end mb-0">
-                      {{mensaje["texto"]}}
-                    </p>
-                  </div>
+                </div>
+                <div class="card-body">
+                  <p class="text-end mb-0">
+                    {{mensaje["texto"]}}
+                  </p>
+                </div>
               </div>
-          </li>
+            </li>
           </ng-template>
+
+
       </div>
     </ul>
     <form [formGroup]="mensajeForm">

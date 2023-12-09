@@ -5,8 +5,8 @@ from bson import json_util
 from flask_jwt_extended import jwt_required, get_jwt
 from main.auth.decorators import admin_required
 
+#T* Usuario
 class Usuario(Resource):
-
     #! Perfil de usuario
     def get(self, alias):
         user = mongo.db.users.find_one({'alias': alias}, {'alias': 1, 'nombre': 1, 'descripcion': 1, 'foto': 1, 'seguidos': 1, 'seguidores': 1})
@@ -16,7 +16,6 @@ class Usuario(Resource):
     #! Seguir o dejar de seguir
     @jwt_required()
     def put(self, alias):
-        
         seguido = mongo.db.users.find_one({"alias": alias})
         if seguido is None:
             return "Usuario inexistente", 409
@@ -38,8 +37,9 @@ class Usuario(Resource):
 
         return "Comenzaste a seguir a '{}'".format(alias), 200
 
+
+#T* Usuarios
 class Usuarios(Resource):
-    
     #! Obtener todos los usuarios
     @admin_required
     def get(self):
@@ -48,9 +48,9 @@ class Usuarios(Resource):
         return Response(response, mimetype="application/json")
 
 
+#T* UsuariosEncontrados
 class UsuariosEncontrados(Resource):
-
-    #! Lista de usuarios encontrados
+    #! Buscar usuarios por alias
     def get(self, alias): 
         user = mongo.db.users.find({'alias': {'$regex': alias, '$options': 'i'}}, {"alias":1, "_id": 0})
         response = json_util.dumps(user)

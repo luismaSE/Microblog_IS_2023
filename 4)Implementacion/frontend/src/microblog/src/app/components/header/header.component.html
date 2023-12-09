@@ -1,4 +1,4 @@
-i<nav class="navbar">
+<nav class="navbar">
 
     <div class="container-fluid text-center">
 
@@ -33,6 +33,7 @@ i<nav class="navbar">
             <a class="navbar-brand">Microblog</a>
         </div>
 
+        <!--! Buscar usuario  -->
         <form [formGroup]="buscarForm">
             <div class="col">
                 <div class="input-group px-4 py-2">
@@ -42,12 +43,13 @@ i<nav class="navbar">
                         id="search-button" 
                         data-bs-toggle="modal" 
                         data-bs-target="#ModalFiltros" 
-                        (click)="submitBuscar()">
+                        (click)="buscar()">
                         <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
                     </button>
                 </div>
             </div>
         </form>
+        
     </div>
 </nav>
 

@@ -2,7 +2,7 @@
 
     <div class="dropdown" *ngIf=" token === undefined">
         <app-bienvenida></app-bienvenida>
-      </div>
+    </div>
 
     <div class="col">
     </div>
@@ -23,9 +23,10 @@
                     class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
                     </div>
 
-
                     <h5 class="card-title my-2" style="text-align: start; font-size: 2vh;">{{user.nombre}}</h5>
                 </div>
+
+                <!--! Datos del usuario -->
                 <div class="col-9">
                     <div class="row mt-3">
                         <div class="col-3 text-center">
@@ -41,36 +42,35 @@
                             <h6 style="font-size: 2vh;">mensajes</h6>
                         </div>
                         <div class="col-3 text-end">
-                            <div *ngIf="username === alias">
 
-                            </div>
                             <div *ngIf="username !== alias">
+                                <!--! Dejar de seguir usuario  -->
                                 <div *ngIf="seguido === true">
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-primary" routerLink="mp" (click)="enviarMp()">
                                             <i class="fa-solid fa-message"></i>
                                         </button>
-                                        <button type="button" class="btn btn-danger" (click)="submit()">
-                                            <i class="fa-solid fa-user-minus"></i>
+                                        <button type="button" class="btn btn-danger" (click)="seguir()">
+                                            <i class="fa-solid fa-user-minus"> </i>
                                         </button>
                                     </div>
                                 </div>
     
+                                <!--! Seguir usuario -->
                                 <div *ngIf="seguido === false">
                                     <div *ngIf="token">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <button type="button" class="btn btn-primary" routerLink="mp" (click)="enviarMp()">
                                                 <i class="fa-solid fa-message"></i>
                                             </button>
-                                            <button type="button" class="btn btn-success" (click)="submit()">
+                                            <button type="button" class="btn btn-success" (click)="seguir()">
                                                 <i class="fa-sharp fa-solid fa-user-plus"></i>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
-                            
-
                         </div>
                     </div>
                     <hr class="hr" style="border-top: 1px solid rgb(0, 0, 0);" />
@@ -78,18 +78,16 @@
                         <p class="text-start" style="font-size: 1.75vh;">{{user.descripcion}}</p>
                     </div>
                 </div>
-
             </div>
         </div>
-
         <hr class="hr" style="border-top: 1px solid rgb(255, 255, 255);" />
 
+        <!--! Mensajes  -->
         <div  *ngFor="let mensaje of arrayMensajes">
             <app-mensaje [mensaje] = "mensaje"></app-mensaje>
         </div>
 
     </div>
-
     <div class="col">
     </div>
 </div>

@@ -41,28 +41,13 @@ export class BienvenidaComponent implements OnInit {
     })
   }
 
-
-  submitlogin() {
+  //! Login
+  submitLogin() {
     if(this.loginForm.valid) {
       this.login(
         {
           correo:this.loginForm.value.email, 
           password: this.loginForm.value.contra
-        }
-      )
-    }
-  }
-
-  submitregistrar() {
-    if(this.loginForm.valid) {
-    this.registrar(
-        {
-          correo: this.registrarForm.value.email,
-          alias: this.registrarForm.value.alias,
-          nombre: this.registrarForm.value.nombre,
-          password: this.registrarForm.value.contra,
-          descripcion: this.registrarForm.value.descripcion,
-          foto: this.registrarForm.value.foto
         }
       )
     }
@@ -75,20 +60,34 @@ export class BienvenidaComponent implements OnInit {
         next: (rta) => {
           localStorage.setItem('token', rta.access_token) ;
           this.router.navigate(["tablon"])
-        }, 
         
-        error: (error) =>{
+        }, error: (error) =>{
+          //! Usuario no encontrado
           alert(error.error);
           console.log('Error: ', error);
           localStorage.removeItem('token');
-    
-        }, 
         
-        complete: () => {
+        }, complete: () => {
           console.log('Terminó el login.');
         }
       }
     )
+  }
+  
+  //! Registrar
+  submitRegistrar() {
+    if(this.loginForm.valid) {
+    this.registrar(
+        {
+          correo: this.registrarForm.value.email,
+          alias: this.registrarForm.value.alias,
+          nombre: this.registrarForm.value.nombre,
+          password: this.registrarForm.value.contra,
+          descripcion: this.registrarForm.value.descripcion,
+          foto: this.registrarForm.value.foto
+        }
+        )
+      }
   }
 
   registrar(dataLogin:any) {

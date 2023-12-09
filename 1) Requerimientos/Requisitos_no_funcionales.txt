@@ -1,5 +1,12 @@
-Requisitos no funcionales
+Requisitos no funcionales:
  
 La aplicación deberá poder ser visualizada en navegadores Chrome, Mozilla Firefox, Opera y Safari.
-Los usuarios no pueden publicar mensajes de más de 140 caracteres. 
-El nombre de usuario no puede tener más de 15 caracteres.
+
+Publicar mensajes: 
+- No más de 140 caracteres
+- Los usuarios mencionados (@) deben existir en el sistema
+- Las etiquetas se representan con #
+
+Registro: 
+- alias > 15
+- correo y alias que no existan ya en el sistema

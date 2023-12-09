@@ -29,11 +29,11 @@ export class MensajePrivadoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
     this.contactoNuevo = localStorage.getItem("contactoNuevo") || undefined
     localStorage.removeItem("contactoNuevo")
-    
     this.token = localStorage.getItem("token") || undefined
+
+    //! Contactos
     this.ContactosService.getContactos(this.token).subscribe(
       (data:any) => {
         this.arrayContactos = data;
@@ -51,37 +51,26 @@ export class MensajePrivadoComponent implements OnInit {
           (data:any) => {
             this.arrayMensajes = data;
             this.contacto = this.primero
-            
           }
         )
       }
     )
     this.mensajeForm = this.formBuilder.group({
       texto: ["", Validators.required],
-    
-    } )
-  
+    })
   }
 
+  //! Mensajes de un contacto
   submit(alias:any) {
     this.MensajesPrivadosContactoService.getMensajes(alias,this.token).subscribe(
       (data:any) => {
         this.arrayMensajes = data;
         this.contacto = alias
-        
       }
     )
-
   }
 
-  getDecodedAccessToken(token: string): any {
-    try {
-      return jwt_decode(token);
-    } catch(Error) {
-      return null;
-    }
-  }
-
+  //! Enviar mensaje privado
   send(destinatario:any) {
     if(this.mensajeForm.valid) {
       this.MensajePrivado.postMensajePrivado({texto:this.mensajeForm.value.texto, destinatario:destinatario},this.token).subscribe()
@@ -92,6 +81,15 @@ export class MensajePrivadoComponent implements OnInit {
       {
         texto: ["", Validators.required],
       } 
-    )
+      )
+    }
+
+    getDecodedAccessToken(token: string): any {
+      try {
+        return jwt_decode(token);
+      } catch(Error) {
+        return null;
+      }
+    }
+  
   }
-}

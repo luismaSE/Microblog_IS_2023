@@ -5,6 +5,36 @@ from flask_jwt_extended import create_access_token
 
 auth = Blueprint('auth', __name__, url_prefix='/auth')
 
+#! Login de usuario
+@auth.route('/login', methods=['POST'])
+def login():
+    correo = request.json['correo']
+    password = request.json['password']
+    if not correo or not password:
+        return "Faltan campos obligatorios", 400
+    
+    user = mongo.db.users.find_one({"correo": correo})
+    if user is None:
+        return "Usuario no encontrado", 404
+    
+    password_hashed = user["password"]
+    
+    #! Contenido del JWT
+    if check_password_hash(password_hashed, password):
+        additional_claims = {
+            "admin":user["admin"], 
+            "correo": user["correo"], 
+            "alias": user["alias"],
+            "descripcion": user["descripcion"],
+            "foto": user["foto"],
+            }
+        access_token = create_access_token(identity=correo,additional_claims=additional_claims)
+        return jsonify(access_token=access_token), 200
+    else:
+        return "Contraseña incorrecta", 401
+
+
+#! Registro de usuario
 @auth.route('/register', methods=['POST'])
 def register():
     #! Campos obligatorios
@@ -13,7 +43,10 @@ def register():
     nombre = request.json['nombre']
     password = request.json['password']
     
-    #TODO API del diego para los emails.
+    if not correo or not alias or not nombre or not password:
+        return "Faltan campos obligatorios", 400
+    
+    #! Condición 1: Alias menor a 15 caracteres
     if len(alias) > 15:
         return "El alias no puede tener más de 15 caracteres.", 409
     
@@ -21,10 +54,12 @@ def register():
     descripcion = request.json['descripcion']
     foto = request.json['foto']
     
+    #! Condición 2: No exista un usuario con el mismo correo o alias
     cuenta = mongo.db.users.find_one({"correo": correo})
     alias2 = mongo.db.users.find_one({"alias": alias})
     
     if cuenta == None and alias2 == None:
+        #! Condición 3: Correo y contraseña no estén vacíos
         if correo and password:
             hashed_password = generate_password_hash(password)
             id = mongo.db.users.insert_one(
@@ -52,30 +87,6 @@ def register():
     else:
         return "Ya existe un usuario con ese email o alias.", 409
 
-
-@auth.route('/login', methods=['POST'])
-def login():
-    correo = request.json['correo']
-    password = request.json['password']
-    user = mongo.db.users.find_one({"correo": correo})
-    if user is None:
-        return "Usuario no encontrado", 404
-    
-    password_hashed = user["password"]
-    
-    #! Contenido del JWT
-    if check_password_hash(password_hashed, password):
-        additional_claims = {
-            "admin":user["admin"], 
-            "correo": user["correo"], 
-            "alias": user["alias"],
-            "descripcion": user["descripcion"],
-            "foto": user["foto"],
-            }
-        access_token = create_access_token(identity=correo,additional_claims=additional_claims)
-        return jsonify(access_token=access_token), 200
-    else:
-        return "Contraseña incorrecta", 401
 
 @auth.errorhandler(404)
 def not_found(error=None):

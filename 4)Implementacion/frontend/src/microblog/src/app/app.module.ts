@@ -24,7 +24,7 @@ import { MensajesPrivadosComponent } from './pages/mensajes-privados/mensajes-pr
 
 
 // duda
-import { MuroComponent } from './components/muro/muro.component';
+import { TablonComponent } from './components/tablon/tablon.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -46,7 +46,7 @@ import { TrendingComponent } from './components/trending/trending.component';
     MensajesPrivadosComponent,
     MensajePrivadoComponent,
 
-    MuroComponent,
+    TablonComponent,
     MuroUsuarioComponent,
     TrendingComponent,
   ],

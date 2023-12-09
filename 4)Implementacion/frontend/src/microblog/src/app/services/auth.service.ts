@@ -16,16 +16,17 @@ export class AuthService {
     private router: Router
     ) { }
     
-    //TODO No se si el register va aca o en post.services.ts 
+    //! Login
+    login(dataLogin:any): Observable<any> {  
+      return this.httpClient.post(this.url + '/login', dataLogin).pipe(take(1))
+    }
+    
+    //! Register
     register(dataLogin:any): Observable<any>  {
       return this.httpClient.post(this.url + '/register', dataLogin).pipe(take(1))
     }
 
-    login(dataLogin:any): Observable<any> {  
-      return this.httpClient.post(this.url + '/login', dataLogin).pipe(take(1))
-    }
-
-
+    //! Logout
     logout() {
       console.log("Cerrando sesion")
       localStorage.clear()
